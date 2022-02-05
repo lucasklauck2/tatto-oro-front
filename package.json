@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -31,7 +31,9 @@
     "@fullcalendar/interaction": "^5.10.1",
     "@fullcalendar/timegrid": "^5.10.1",
     "bootstrap": "^4.1.3",
+    "express": "^4.17.2",
     "jquery": "^3.3.1",
+    "path": "^0.12.7",
     "popper.js": "^1.14.3",
     "primeicons": "^5.0.0",
     "primeng": "^13.1.0",
