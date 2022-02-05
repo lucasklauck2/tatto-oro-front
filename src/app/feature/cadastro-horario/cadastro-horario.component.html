@@ -41,6 +41,6 @@
 
   <div class="toolbar">
     <button pButton pRipple type="button" label="Salvar" class="p-button-success" (click)="salvarHorario()"
-      [disabled]="!form.valid"></button>
+      [disabled]="!form.valid || salvando"></button>
   </div>
 </div>

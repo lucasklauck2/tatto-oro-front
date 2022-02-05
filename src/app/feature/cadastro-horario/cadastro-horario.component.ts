@@ -73,6 +73,10 @@ export class CadastroHorarioComponent implements OnInit {
   }
 
   salvarHorario() {
+    if (this.salvando) {
+      return;
+    }
+
     this.salvando = true;
 
     const horario = this.form.value;
