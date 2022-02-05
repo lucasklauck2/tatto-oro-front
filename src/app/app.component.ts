@@ -3,7 +3,13 @@ import '@fortawesome/fontawesome-free/css/all.css'; // needs additional webpack 
 import { DialogService } from 'primeng/dynamicdialog';
 import { ExibicaoDataComponent } from 'src/app/feature/exibicao-data/page/exibicao-data.component';
 import { HorarioDTO } from 'src/app/model/horario.dto';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/angular';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
@@ -24,6 +30,26 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   eventos: Array<EventInput> = new Array();
 
+  calendarOptions: CalendarOptions = {
+    headerToolbar: {
+      left: '',
+      center: 'title',
+      right: '',
+    },
+    titleFormat: { year: 'numeric', month: 'long' },
+    buttonText: {
+      today: 'Hoje',
+    },
+    initialView: 'dayGridMonth',
+    locale: 'pt-BR',
+    height: '80vh',
+    themeSystem: 'bootstrap',
+    dateClick: this.eventoClick.bind(this),
+    plugins: [bootstrapPlugin, timeGridPlugin],
+  };
+
+  // larguraAtual: number;
+
   constructor(
     private dialogService: DialogService,
     private horarioService: HorarioService
@@ -37,23 +63,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.calendario.getApi().prev();
   }
 
-  calendarOptions: CalendarOptions = {
-    headerToolbar: {
-      left: '',
-      center: 'title',
-      right: 'prev,next today',
-    },
-    titleFormat: { year: 'numeric', month: 'long' },
-    buttonText: {
-      today: 'Hoje',
-    },
-    initialView: 'dayGridMonth',
-    locale: 'pt-BR',
-    height: '80vh',
-    themeSystem: 'bootstrap',
-    dateClick: this.eventoClick.bind(this),
-    plugins: [bootstrapPlugin, timeGridPlugin],
-  };
+  // @HostListener('window:resize', ['$event'])
+  // onResize(event: any) {
+  //   this.larguraAtual = window.innerWidth;
+  // }
 
   converterHorariosEmEventos(horarios: Array<HorarioDTO>) {
     horarios.forEach((horario) => {
@@ -123,5 +136,17 @@ export class AppComponent implements OnInit, AfterViewInit {
 
       this.converterHorariosEmEventos(horarios);
     });
+  }
+
+  proximo() {
+    this.calendario.getApi().next();
+  }
+
+  anterior() {
+    this.calendario.getApi().prev();
+  }
+
+  hoje() {
+    this.calendario.getApi().today();
   }
 }

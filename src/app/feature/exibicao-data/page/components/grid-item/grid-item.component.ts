@@ -1,6 +1,6 @@
 import { DialogService } from 'primeng/dynamicdialog';
 import { ExibicaoHorarioComponent } from 'src/app/feature/exibicao-horario/exibicao-horario.component';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HorarioDTO } from './../../../../../model/horario.dto';
 
 @Component({
@@ -11,7 +11,9 @@ import { HorarioDTO } from './../../../../../model/horario.dto';
 export class GridItemComponent implements OnInit {
   @Input() horarioDTO: HorarioDTO;
 
-  constructor(private dialogService: DialogService) {}
+  @Output() readonly eventoClick = new EventEmitter();
+
+  constructor() {}
 
   ngOnInit(): void {}
 
@@ -49,12 +51,7 @@ export class GridItemComponent implements OnInit {
   }
 
   onClickHorario() {
-    this.dialogService.open(ExibicaoHorarioComponent, {
-      header: 'Detalhes',
-      height: '500px',
-      width: '400px',
-      data: this.horarioDTO,
-    });
+    this.eventoClick.emit();
   }
 
   private ajustarCasasHorario(horario: number) {

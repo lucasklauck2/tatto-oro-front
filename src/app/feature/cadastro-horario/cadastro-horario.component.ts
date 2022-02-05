@@ -43,7 +43,9 @@ export class CadastroHorarioComponent implements OnInit {
           Validators.required
         ),
         horarioTermino: this.fb.control(
-          new Date(this.horarioDTO.horarioTermino)
+          !!this.horarioDTO.horarioTermino
+            ? new Date(this.horarioDTO.horarioTermino)
+            : null
         ),
         local: this.fb.control(this.horarioDTO.local, Validators.required),
         numeroTelefone: this.fb.control(this.horarioDTO.numeroTelefone),

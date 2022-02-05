@@ -1,13 +1,15 @@
 <div class="container">
-  <p><b>Nome:</b> {{horarioDTO?.nomeCliente}}</p>
-  <p><b>Local:</b> {{horarioDTO?.local}}</p>
-  <p><b>Telefone:</b> {{horarioDTO?.numeroTelefone}}</p>
-  <p><b>Data início:</b> {{horarioDTO?.horarioInicio | date:'dd/MM/yyyy HH:mm'}}</p>
-  <p><b>Data fim:</b> {{horarioDTO?.horarioTermino | date:'dd/MM/yyyy HH:mm'}}</p>
-  <p><b>Observações:</b> {{horarioDTO?.observacoes}}</p>
-</div>
+  <div class="informacoes">
+    <p><b>Nome:</b> {{horarioDTO?.nomeCliente}}</p>
+    <p><b>Local:</b> {{horarioDTO?.local}}</p>
+    <p><b>Telefone:</b> {{horarioDTO?.numeroTelefone}}</p>
+    <p><b>Data início:</b> {{horarioDTO?.horarioInicio | date:'dd/MM/yyyy HH:mm'}}</p>
+    <p *ngIf="!!horarioDTO?.horarioTermino"><b>Data fim:</b> {{horarioDTO?.horarioTermino | date:'dd/MM/yyyy HH:mm'}}
+    </p>
+    <p *ngIf="!!horarioDTO?.observacoes"><b>Observações:</b> {{horarioDTO?.observacoes}}</p>
+  </div>
 
-<!-- <p-galleria [(value)]="images" [(visible)]="displayCustom" [(activeIndex)]="activeIndex"
+  <!-- <p-galleria [(value)]="images" [(visible)]="displayCustom" [(activeIndex)]="activeIndex"
   [containerStyle]="{'max-width': '400px'}" [numVisible]="7" [circular]="true" [fullScreen]="true"
   [showItemNavigators]="true" [showThumbnails]="false" [baseZIndex]="100000">
   <ng-template pTemplate="item" let-item>
@@ -26,7 +28,9 @@
   </div>
 </div> -->
 
-<div class="toolbar">
-  <button pButton pRipple type="button" label="Editar
-  horário" class="p-button-info" (click)="editarHorario()"></button>
+  <div class="toolbar">
+    <button pButton pRipple type="button" label="Editar" class="p-button-info" (click)="editarHorario()"></button>
+    <button pButton pRipple type="button" label="Deletar" class="p-button-danger ml-2"
+      (click)="deletarHorario()"></button>
+  </div>
 </div>

@@ -3,6 +3,8 @@ import {
   DynamicDialogConfig,
   DynamicDialogRef,
 } from 'primeng/dynamicdialog';
+import { ExibicaoHorarioComponent } from 'src/app/feature/exibicao-horario/exibicao-horario.component';
+import { HorarioDTO } from 'src/app/model/horario.dto';
 import { Component, OnInit } from '@angular/core';
 import { CadastroHorarioComponent } from './../../cadastro-horario/cadastro-horario.component';
 
@@ -37,6 +39,17 @@ export class ExibicaoDataComponent implements OnInit {
           diaHorario: this.dataSelecionada,
           editando: false,
         },
+      })
+      .onClose.subscribe(() => this.ref.close());
+  }
+
+  onClickItem(horarioDTO: HorarioDTO) {
+    this.dialogService
+      .open(ExibicaoHorarioComponent, {
+        header: 'Detalhes',
+        height: '500px',
+        width: '400px',
+        data: horarioDTO,
       })
       .onClose.subscribe(() => this.ref.close());
   }

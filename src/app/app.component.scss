@@ -3,7 +3,12 @@
   justify-content: center;
   align-items: center;
   height: 70px;
-  background-color: #00356d;
+  background: linear-gradient(
+    356deg,
+    rgba(85, 187, 254, 1) 0%,
+    rgba(42, 164, 255, 1) 51%,
+    rgba(72, 117, 219, 1) 99%
+  );
 
   h1 {
     color: white;
@@ -14,4 +19,12 @@
 .container {
   margin-top: 20px;
   width: 95vw;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

@@ -1,7 +1,12 @@
-  <grid-item style="width: 100%;" *ngFor="let horarioDTO of listaHorarioDTO" [horarioDTO]="horarioDTO">
+<div *ngIf="!!listaHorarioDTO?.length; else semRegistros">
+  <grid-item style="width: 100%;" *ngFor="let horarioDTO of listaHorarioDTO" [horarioDTO]="horarioDTO"
+    (eventoClick)="onClickItem(horarioDTO)">
   </grid-item>
+</div>
 
-  <div class="botao mt-3">
-    <button pButton pRipple type="button" label="Marcar
+<ng-template #semRegistros>Não existem horários para a data selecionada.</ng-template>
+
+<div class="botao mt-3">
+  <button pButton pRipple type="button" label="Marcar
   horário" class="p-button-info" (click)="adicionarHorario()"></button>
-  </div>
+</div>

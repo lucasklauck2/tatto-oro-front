@@ -1,8 +1,17 @@
 <div class="header">
-  <h1>Oro Tatto</h1>
+  <h1>Agenda Oro Tatto</h1>
 </div>
 
 <div class="container">
+
+  <div class="toolbar">
+
+    <button pButton pRipple type="button" label="Anterior" class="p-button-success" (click)="anterior()"></button>
+    <button pButton pRipple type="button" label="Próximo" class="p-button-success ml-2" (click)="proximo()"></button>
+    <button pButton pRipple type="button" label="Hoje" class="p-button-info ml-2" (click)="hoje()"></button>
+
+  </div>
+
   <full-calendar #calendario [options]="calendarOptions">
   </full-calendar>
 

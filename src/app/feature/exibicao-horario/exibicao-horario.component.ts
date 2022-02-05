@@ -5,6 +5,7 @@ import {
 } from 'primeng/dynamicdialog';
 import { Component, OnInit } from '@angular/core';
 import { HorarioDTO } from './../../model/horario.dto';
+import { HorarioService } from './../../service/horario.service';
 import { CadastroHorarioComponent } from './../cadastro-horario/cadastro-horario.component';
 
 @Component({
@@ -41,7 +42,8 @@ export class ExibicaoHorarioComponent implements OnInit {
   constructor(
     private config: DynamicDialogConfig,
     private dialogService: DialogService,
-    private ref: DynamicDialogRef
+    private ref: DynamicDialogRef,
+    private horarioService: HorarioService
   ) {
     this.horarioDTO = this.config.data;
   }
@@ -66,5 +68,11 @@ export class ExibicaoHorarioComponent implements OnInit {
         },
       })
       .onClose.subscribe(() => this.ref.close());
+  }
+
+  deletarHorario() {
+    this.horarioService
+      .deletar(this.horarioDTO)
+      .subscribe(() => this.ref.close());
   }
 }
