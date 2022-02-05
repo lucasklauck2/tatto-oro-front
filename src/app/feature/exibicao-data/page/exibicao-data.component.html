@@ -1,0 +1,7 @@
+  <grid-item style="width: 100%;" *ngFor="let horarioDTO of listaHorarioDTO" [horarioDTO]="horarioDTO">
+  </grid-item>
+
+  <div class="botao mt-3">
+    <button pButton pRipple type="button" label="Marcar
+  horário" class="p-button-info" (click)="adicionarHorario()"></button>
+  </div>

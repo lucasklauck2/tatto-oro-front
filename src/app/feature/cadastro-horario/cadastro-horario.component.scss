@@ -1,0 +1,28 @@
+.container {
+  .campo-form {
+    display: flex;
+    flex-direction: column;
+
+    p-calendar span {
+      width: 100%;
+    }
+  }
+}
+
+::ng-deep .p-inputtext {
+  width: 100%;
+}
+
+::ng-deep .color-picker {
+  width: 100%;
+
+  input {
+    width: 100%;
+  }
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
