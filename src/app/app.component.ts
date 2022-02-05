@@ -10,7 +10,11 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
+import {
+  CalendarOptions,
+  EventClickArg,
+  FullCalendarComponent,
+} from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/angular';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 import { DateClickArg } from '@fullcalendar/interaction';
@@ -43,9 +47,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     initialView: 'dayGridMonth',
     initialDate: new Date(),
     locale: 'pt-BR',
-    height: '80vh',
+    height: '75vh',
     themeSystem: 'bootstrap',
-    dateClick: this.eventoClick.bind(this),
+    dateClick: this.dateClick.bind(this),
+    eventClick: this.eventoClick.bind(this),
     plugins: [bootstrapPlugin, timeGridPlugin],
   };
 
@@ -75,9 +80,19 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
 
-  eventoClick(selectInfo: DateClickArg) {
+  eventoClick(eventInfo: EventClickArg) {
+    const dataSelecionada = new Date(eventInfo.event.startStr);
+
+    this.abrirExibicaoData(dataSelecionada);
+  }
+
+  dateClick(selectInfo: DateClickArg) {
     const dataSelecionada = new Date(selectInfo.date);
 
+    this.abrirExibicaoData(dataSelecionada);
+  }
+
+  abrirExibicaoData(dataSelecionada: Date) {
     const tituloModal = this.adquirirTituloDaModal(dataSelecionada);
 
     const horarios = this.horarios.filter((horario) => {

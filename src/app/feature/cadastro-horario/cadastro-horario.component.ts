@@ -102,9 +102,7 @@ export class CadastroHorarioComponent implements OnInit {
       horario.codigoCor
     );
 
-    this.horarioService.salvar(horarioDTO).subscribe();
-
-    this.ref.close();
+    this.horarioService.salvar(horarioDTO).subscribe(() => this.ref.close());
   }
 
   ajustarHorario(horarioUm: Date, horarioDois: Date) {
