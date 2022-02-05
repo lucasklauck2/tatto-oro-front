@@ -77,8 +77,6 @@ export class CadastroHorarioComponent implements OnInit {
 
     const horario = this.form.value;
 
-    console.log(horario.horarioTermino);
-
     const horarioInicioAjustado = this.ajustarHorario(
       new Date(horario.horarioInicio),
       this.dataNovoHorario

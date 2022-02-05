@@ -41,14 +41,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       today: 'Hoje',
     },
     initialView: 'dayGridMonth',
+    initialDate: new Date(),
     locale: 'pt-BR',
     height: '80vh',
     themeSystem: 'bootstrap',
     dateClick: this.eventoClick.bind(this),
     plugins: [bootstrapPlugin, timeGridPlugin],
   };
-
-  // larguraAtual: number;
 
   constructor(
     private dialogService: DialogService,
@@ -59,14 +58,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.adquirirHorarios();
   }
 
-  ngAfterViewInit(): void {
-    this.calendario.getApi().prev();
-  }
-
-  // @HostListener('window:resize', ['$event'])
-  // onResize(event: any) {
-  //   this.larguraAtual = window.innerWidth;
-  // }
+  ngAfterViewInit(): void {}
 
   converterHorariosEmEventos(horarios: Array<HorarioDTO>) {
     horarios.forEach((horario) => {
