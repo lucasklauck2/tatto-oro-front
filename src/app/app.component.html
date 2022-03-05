@@ -1,14 +1,16 @@
 <header class="header">
-  <h1>Agenda Oro Tattoo</h1>
+  <span>Agenda Oro Tattoo</span>
 </header>
 
 <main class="container">
 
   <div class="toolbar">
 
-    <button pButton pRipple type="button" label="Anterior" class="p-button-success" (click)="anterior()"></button>
-    <button pButton pRipple type="button" label="Próximo" class="p-button-success ml-2" (click)="proximo()"></button>
-    <button pButton pRipple type="button" label="Hoje" class="p-button-info ml-2" (click)="hoje()"></button>
+    <button pButton pRipple type="button" label="Anterior" class="p-button-success botao-prox-ant"
+      (click)="anterior()"></button>
+    <button pButton pRipple type="button" label="Próximo" class="p-button-success ml-2 botao-prox-ant"
+      (click)="proximo()"></button>
+    <button pButton pRipple type="button" label="Hoje" class="p-button-info ml-2 botao-hoje" (click)="hoje()"></button>
 
   </div>
 
@@ -16,6 +18,6 @@
   </full-calendar>
 
   <div class="rodape">
-    <p>© 2022 - Lucas Klauck</p>
+    <span>© 2022 - Lucas Klauck</span>
   </div>
 </main>

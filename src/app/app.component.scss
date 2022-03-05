@@ -5,14 +5,15 @@
   height: 70px;
   background: linear-gradient(
     356deg,
-    rgba(85, 187, 254, 1) 0%,
-    rgba(42, 164, 255, 1) 51%,
-    rgba(72, 117, 219, 1) 99%
+    rgb(41, 0, 95) 0%,
+    rgb(76, 0, 199) 51%,
+    rgb(35, 0, 99) 99%
   );
 
-  h1 {
+  span {
+    font-family: "simplifica", sans-serif !important;
     color: white;
-    font-size: 30px;
+    font-size: 40px;
   }
 }
 
@@ -37,4 +38,24 @@
 
 ::ng-deep .fc-daygrid-day-number {
   font-weight: bold;
+}
+
+.botao-hoje {
+  background: black;
+  border-radius: 0;
+  border: 0;
+
+  &:hover {
+    background: rgb(62, 0, 143) !important;
+  }
+}
+
+.botao-prox-ant {
+  background: #4700b7;
+  border-radius: 0;
+  border: 0;
+
+  &:hover {
+    background: #5400db !important;
+  }
 }
