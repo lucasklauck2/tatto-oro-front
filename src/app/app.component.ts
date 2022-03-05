@@ -205,13 +205,17 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   proximo() {
     this.calendario.getApi().next();
+
+    this.atualizarExibicaoDatas();
   }
 
   anterior() {
     this.calendario.getApi().prev();
+    this.atualizarExibicaoDatas();
   }
 
   hoje() {
     this.calendario.getApi().today();
+    this.atualizarExibicaoDatas();
   }
 }
