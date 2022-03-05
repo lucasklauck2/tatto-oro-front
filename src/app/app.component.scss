@@ -34,3 +34,7 @@
   display: flex;
   justify-content: center;
 }
+
+::ng-deep .fc-daygrid-day-number {
+  font-weight: bold;
+}

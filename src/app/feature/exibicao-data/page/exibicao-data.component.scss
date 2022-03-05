@@ -9,3 +9,39 @@
     margin-bottom: 5px;
   }
 }
+
+::ng-deep .color-picker {
+  input {
+    width: 100px !important;
+    height: 40px !important;
+    margin-left: 10px;
+  }
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-cor {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .picker {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &-principal {
+    width: 100%;
+  }
+}
+
+::ng-deep .p-divider {
+  margin: 4px !important;
+}

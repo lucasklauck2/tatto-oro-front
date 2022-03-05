@@ -1,12 +1,36 @@
-<div *ngIf="!!listaHorarioDTO?.length; else semRegistros">
-  <grid-item style="width: 100%;" *ngFor="let horarioDTO of listaHorarioDTO" [horarioDTO]="horarioDTO"
-    (eventoClick)="onClickItem(horarioDTO)">
-  </grid-item>
-</div>
+<div class="container">
+  <div class="container-cor">
+    <p-divider align="center" class="col-12">
+      <span>Cor de fundo </span>
+      <i class="pi pi-palette"></i>
+    </p-divider>
 
-<ng-template #semRegistros>Não existem horários para a data selecionada.</ng-template>
+    <div class="picker">
+      <p-colorPicker [(ngModel)]="codigoCor" [styleClass]="'color-picker'" class="mr-2"
+        (onChange)="registrarAlteracaoCor()">
+      </p-colorPicker>
+      <input type="text" [(ngModel)]="codigoCor" style="width: 100px;height: 40px;" pInputText
+        (change)="registrarAlteracaoCor()" />
+    </div>
+  </div>
 
-<div class="botao mt-3">
-  <button pButton pRipple type="button" label="Marcar
+  <div class="container-principal">
+    <p-divider align="center" class="col-12">
+      <span>Horários </span>
+      <i class="pi pi-clock"></i>
+    </p-divider>
+    <div *ngIf="!!listaHorarioDTO?.length; else semRegistros">
+      <grid-item style="width: 100%;" *ngFor="let horarioDTO of listaHorarioDTO" [horarioDTO]="horarioDTO"
+        (eventoClick)="onClickItem(horarioDTO)">
+      </grid-item>
+    </div>
+
+    <ng-template #semRegistros>Não existem horários para a data selecionada.</ng-template>
+
+    <div class="botao mt-3">
+      <button pButton pRipple type="button" label="Marcar
   horário" class="p-button-info" (click)="adicionarHorario()"></button>
+    </div>
+  </div>
+
 </div>
