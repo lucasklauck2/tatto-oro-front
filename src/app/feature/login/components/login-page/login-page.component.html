@@ -1,0 +1,12 @@
+<div class="principal">
+  <div class="login" [formGroup]="form">
+
+    <input type="text" formControlName="usuario" pInputText placeholder="Usuário" class="mb-3" />
+
+    <input type="password" formControlName="senha" pPassword [feedback]="false" placeholder="Senha" class="mb-3" />
+
+    <button pButton pRipple type="button" label="ENTRAR" class="p-button-success" (click)="login()"
+      [disabled]="form.invalid"></button>
+
+  </div>
+</div>

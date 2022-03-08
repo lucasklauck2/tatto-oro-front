@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { CalendarModule } from 'primeng/calendar';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
@@ -5,6 +6,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ToastModule } from 'primeng/toast';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -47,8 +49,9 @@ FullCalendarModule.registerPlugins([
     ColorPickerModule,
     HttpClientModule,
     InputMaskModule,
+    ToastModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,82 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  background: linear-gradient(
+    356deg,
+    rgb(41, 0, 95) 0%,
+    rgb(76, 0, 199) 51%,
+    rgb(35, 0, 99) 99%
+  );
+
+  span {
+    font-family: "simplifica", sans-serif !important;
+    color: white;
+    font-size: 40px;
+  }
+}
+
+.container {
+  margin-top: 20px;
+  width: 95vw;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.rodape {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep .fc-daygrid-day-number {
+  font-weight: bold;
+}
+
+.botao-hoje {
+  background: black;
+  border-radius: 0;
+  border: 0;
+
+  &:hover {
+    background: rgb(62, 0, 143) !important;
+  }
+}
+
+.botao-prox-ant {
+  background: #4700b7;
+  border-radius: 0;
+  border: 0;
+
+  &:hover {
+    background: #5400db !important;
+  }
+}
+
+.header {
+  display: flex;
+  width: 100%;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sair {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+
+  span {
+    cursor: pointer;
+  }
+}

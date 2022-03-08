@@ -1,0 +1,19 @@
+.principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw !important;
+  background-color: black;
+
+  .login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(45, 0, 128);
+    height: 500px;
+    width: 50vw;
+    border-radius: 5px;
+  }
+}
