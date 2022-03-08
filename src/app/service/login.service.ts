@@ -28,6 +28,7 @@ export class LoginService {
         severity: 'success',
         summary: 'Login',
         detail: 'Logado com sucesso!',
+        life: 3000,
       });
 
       return;
@@ -44,6 +45,7 @@ export class LoginService {
         severity: 'success',
         summary: 'Login',
         detail: 'Logado com sucesso!',
+        life: 3000,
       });
 
       return;
@@ -53,6 +55,7 @@ export class LoginService {
       severity: 'error',
       summary: 'Erro',
       detail: 'Dados inválidos!',
+      life: 3000,
     });
   }
 
