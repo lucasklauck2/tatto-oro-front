@@ -1,82 +1,71 @@
 import { MessageService } from 'primeng/api';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from './../../environments/environment';
+import { RetornoAutenticacaoDTO } from './../model/retorno-autenticacao.dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  iat1 = 'ahfuaf3541543545411@##@@###@@4d5ef4e';
-  uat1 = 'guioro';
-  pat1 = 'tattoo11552244@';
+  baseUrl = environment.baseUrl;
 
-  iat2 = '2e2ejhu2@##245454512!!@#dDwdwdw';
-  uat2 = 'mariavit';
-  pat2 = 'vitoria11552244@';
-
-  constructor(private router: Router, private messageService: MessageService) {}
+  constructor(
+    private router: Router,
+    private messageService: MessageService,
+    private httpClient: HttpClient
+  ) {}
 
   login(usuario: string, senha: string) {
-    if (usuario === this.uat1 && senha === this.pat1) {
-      sessionStorage.setItem('usuario', this.iat1);
+    this.httpClient
+      .post<RetornoAutenticacaoDTO>(this.baseUrl + 'login', {
+        usuario: usuario,
+        senha: senha,
+      })
+      .subscribe(
+        (retorno) => {
+          if (!retorno) {
+            return;
+          }
 
-      setTimeout(() => {
-        this.router.navigate(['/inicio']);
-      }, 500);
+          sessionStorage.setItem('Authorization', retorno.Authorization);
 
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Login',
-        detail: 'Logado com sucesso!',
-        life: 3000,
-      });
+          this.router.navigate(['inicio']);
 
-      return;
-    }
-
-    if (usuario === this.uat2 && senha === this.pat2) {
-      sessionStorage.setItem('usuario', this.iat2);
-
-      setTimeout(() => {
-        this.router.navigate(['/inicio']);
-      }, 500);
-
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Login',
-        detail: 'Logado com sucesso!',
-        life: 3000,
-      });
-
-      return;
-    }
-
-    this.messageService.add({
-      severity: 'error',
-      summary: 'Erro',
-      detail: 'Dados inválidos!',
-      life: 3000,
-    });
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Sucesso',
+            detail: 'Logado com sucesso!',
+            life: 3000,
+          });
+        },
+        () =>
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Erro',
+            detail: 'Dados inválidos!',
+            life: 3000,
+          })
+      );
   }
 
   estaLogado() {
-    const token = sessionStorage.getItem('usuario');
+    const token = sessionStorage.getItem('Authorization');
 
-    if (token === this.iat1 || token === this.iat2) {
-      return true;
-    }
-
-    return false;
+    return !!token;
   }
 
-  sair() {
-    sessionStorage.removeItem('usuario');
+  sair(mostrarMensagem = true) {
+    sessionStorage.removeItem('Authorization');
 
-    this.messageService.add({
-      severity: 'info',
-      summary: 'Deslogado',
-      detail: 'Até mais :(',
-    });
+    if (mostrarMensagem) {
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Deslogado',
+        detail: 'Até mais :(',
+      });
+    }
 
     setTimeout(() => {
       this.router.navigate(['login']);

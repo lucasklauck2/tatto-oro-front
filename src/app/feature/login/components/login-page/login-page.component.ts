@@ -28,6 +28,13 @@ export class LoginPageComponent implements OnInit {
   }
 
   login() {
-    this.loginService.login(this.form.value.usuario, this.form.value.senha);
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.loginService.login(
+      new String(this.form.value.usuario).toLowerCase(),
+      this.form.value.senha
+    );
   }
 }

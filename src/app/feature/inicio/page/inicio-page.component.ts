@@ -16,6 +16,7 @@ import bootstrapPlugin from '@fullcalendar/bootstrap';
 import { DateClickArg } from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { LoginService } from './../../../service/login.service';
+import { AlteracaoSenhaComponent } from './../components/alteracao-senha/alteracao-senha.component';
 
 @Component({
   selector: 'app-inicio-page',
@@ -221,5 +222,12 @@ export class InicioPageComponent implements OnInit, AfterViewInit {
 
   sair() {
     this.loginService.sair();
+  }
+
+  alterarSenha() {
+    this.dialogService.open(AlteracaoSenhaComponent, {
+      header: 'Alteração de senha',
+      width: '700px',
+    });
   }
 }

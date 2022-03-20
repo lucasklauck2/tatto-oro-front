@@ -7,7 +7,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ToastModule } from 'primeng/toast';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 import { CadastroHorarioComponent } from './feature/cadastro-horario/cadastro-horario.component';
 import { ExibicaoDataModule } from './feature/exibicao-data/exibicao-data.module';
 import { ExibicaoHorarioComponent } from './feature/exibicao-horario/exibicao-horario.component';
+import { RequestInterceptor } from './interceptor/request.interceptor';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -51,7 +52,14 @@ FullCalendarModule.registerPlugins([
     InputMaskModule,
     ToastModule,
   ],
-  providers: [MessageService],
+  providers: [
+    MessageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

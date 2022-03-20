@@ -1,0 +1,12 @@
+<div class="login" [formGroup]="form">
+
+  <input type="password" formControlName="senhaAntiga" pPassword [feedback]="false" placeholder="Senha antiga"
+    class="mb-3" />
+
+  <input type="password" formControlName="senhaNova" pPassword [feedback]="false" placeholder="Nova senha" class="mb-3"
+    (keydown.enter)="alterarSenha()" />
+
+  <button pButton pRipple type="button" label="SALVAR" class="p-button-success" (click)="alterarSenha()"
+    [disabled]="form?.invalid"></button>
+
+</div>
