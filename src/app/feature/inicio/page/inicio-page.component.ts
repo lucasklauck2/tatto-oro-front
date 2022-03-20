@@ -5,7 +5,13 @@ import { DataInfoDTO } from 'src/app/model/data-info.dto';
 import { HorarioDTO } from 'src/app/model/horario.dto';
 import { DataInfoService } from 'src/app/service/data-info.service';
 import { HorarioService } from 'src/app/service/horario.service';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   CalendarOptions,
   EventClickArg,
@@ -53,6 +59,8 @@ export class InicioPageComponent implements OnInit, AfterViewInit {
     plugins: [bootstrapPlugin, timeGridPlugin],
   };
 
+  width;
+
   constructor(
     private dialogService: DialogService,
     private horarioService: HorarioService,
@@ -61,6 +69,8 @@ export class InicioPageComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.width = window.innerWidth;
+
     this.adquirirHorarios();
 
     DataInfoHelper.adquirirObservableAlteracoes().subscribe((dataInfo) => {
@@ -79,7 +89,16 @@ export class InicioPageComponent implements OnInit, AfterViewInit {
     });
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.width = window.innerWidth;
+  }
+
   ngAfterViewInit(): void {}
+
+  get mobile() {
+    return this.width < 700;
+  }
 
   atualizarExibicaoDatas() {
     document

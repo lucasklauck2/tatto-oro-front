@@ -1,10 +1,9 @@
 <header class="header">
 
-  <div class="col-4"></div>
-  <div class="col-4 titulo"><span>Agenda Oro Tattoo</span></div>
-  <div class="col-4 sair"><span style="right: 10px;margin-right: 10px;"><a (click)="alterarSenha()">alterar
+  <div class="col titulo" *ngIf="!mobile"><span>Agenda Oro Tattoo</span></div>
+  <div class="col sair"><span *ngIf="mobile" style="margin-right: 30px;">Oro Tatto</span><span
+      style="right: 10px;margin-right: 10px;"><a (click)="alterarSenha()">alt.
         senha</a></span><span style="right: 10px;color: tomato;"><a (click)="sair()">sair</a></span></div>
-
 </header>
 
 <main class="container">
